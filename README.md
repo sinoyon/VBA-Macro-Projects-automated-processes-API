@@ -6,15 +6,14 @@ VBA (Visual Basic for Applications) is a programming language that is built into
 
 Here is an example of VBA code that will automate the task of creating a new worksheet in an Excel workbook:
 
-'''
+<script>
 Sub CreateNewWorksheet()
     'Create a new worksheet
     Dim ws As Worksheet
     Set ws = ThisWorkbook.Sheets.Add(After:=ThisWorkbook.Sheets(ThisWorkbook.Sheets.Count))
     ws.Name = "New Worksheet"
 End Sub
-
-'''
+</script>
 
 
 
