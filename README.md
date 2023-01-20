@@ -81,6 +81,7 @@ End Sub
 This code adds data validation to the range A1:A10 on Sheet1, using the Validation property of the range. The Add method is used to add a validation rule of type xlValidateList, with the Formula1:="Red, Green, Blue" argument specifying the list of valid inputs. The other properties are used to customize the error messages and input prompts.
 
 These are just a few examples of how you can use VBA to automate tasks in Excel. With a little creativity and effort, you can automate almost anything in Excel and improve your productivity. Remember to properly test your code and ensure that it works as expected before using it in a production environment, and also document your code to make sure it is readable and understandable for others.
+
 </br></br>
 👉 If you find this project useful, please ⭐ this repository 😆!</br></br>
 👉 Check out my work on GitHub using similar data sets with SAS studio <a href="https://github.com/sinoyon?tab=repositories">Here. </a>
