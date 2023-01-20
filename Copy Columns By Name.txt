@@ -1,0 +1,53 @@
+Sub CopyColumnsByName()
+    Dim sourceSheet As Worksheet
+    Dim targetSheet As Worksheet
+    Dim sourceRange As Range
+    Dim targetRange As Range
+    Dim columnName As String
+    Dim uniqueNames As Collection
+    
+    ' Set the source worksheet
+    Set sourceSheet = ThisWorkbook.Sheets("summary")
+    
+    ' Set the range to search in the source sheet
+    Set sourceRange = sourceSheet.Range("A1:Z1")
+    
+    ' Create a collection to store the unique column names
+    Set uniqueNames = New Collection
+    
+    ' Loop through the columns in the source range
+    For Each c In sourceRange.Columns
+        columnName = c.Value
+        
+        If Not IsEmpty(columnName) Then
+            ' If the column name is not empty, check if it is unique
+            On Error Resume Next
+            uniqueNames.Add columnName, CStr(columnName)
+            On Error GoTo 0
+        End If
+    Next c
+    
+    ' Loop through the unique column names
+    For Each n In uniqueNames
+        columnName = n
+        
+        ' Create a new sheet with the same name as the column
+        Set targetSheet = ThisWorkbook.Sheets.Add
+        targetSheet.Name = columnName
+        On Error Resume Next
+        ' Loop through the columns in the source range
+        For Each c In sourceRange.Columns
+            If c.Value = columnName Then
+                ' If the column name matches the current unique name, copy the column to the new sheet
+                c.EntireColumn.Copy Destination:=targetSheet.Cells(1, targetSheet.Columns.Count).End(xlToLeft).Offset(0, 1)
+            End If
+        Next c
+    Next n
+    
+    ' Clean up
+    Set sourceSheet = Nothing
+    Set targetSheet = Nothing
+    Set sourceRange = Nothing
+    Set targetRange = Nothing
+    Set uniqueNames = Nothing
+End Sub

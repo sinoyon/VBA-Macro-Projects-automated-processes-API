@@ -1,0 +1,6 @@
+Sub RefreshActiveSheetPivotsOnly()
+   Dim tblPivot As PivotTable
+   For Each tblPivot In ActiveSheet.PivotTables
+      tblPivot.RefreshTable
+   Next tblPivot
+End Sub

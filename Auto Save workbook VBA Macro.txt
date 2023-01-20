@@ -1,0 +1,6 @@
+Private Sub Worksheet_Change(ByVal Target As Range)
+    If Not Intersect(Target, Me.Range("A1:AP1000")) Is Nothing Then
+        ThisWorkbook.Save
+    End If
+End Sub
+ 
